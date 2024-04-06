@@ -1,17 +1,9 @@
-import React from 'react'
-import { Provider } from 'react-redux'
-import { PersistGate } from 'redux-persist/integration/react'
-import RootComponent from './RootComponent'
-import { persistor, store } from './store/reducers/store'
+import style from "@/App.scss";
+import routes from "@/router";
+import { useRoutes } from "react-router-dom";
 
-const App: React.FC = () => {
-    return (
-        <Provider store={store}>
-            <PersistGate loading={null} persistor={persistor}>
-                <RootComponent />
-            </PersistGate>
-        </Provider>
-    )
+export default function App() {
+  const router = useRoutes(routes);
+
+  return <div className={style.container}>{router}</div>;
 }
-
-export default App
